@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default
+}
+
+.flex-center {
+  @apply flex justify-center items-center
+}
+
+ul .active {
+  @apply btn btn-dash btn-success
+}
