@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { use } from 'react'
 import { Link, NavLink } from 'react-router'
+import { AuthContext } from '../Contexts/AuthContext'
 
 const Navbar = () => {
+  const { user } = use(AuthContext)
 
   const navItem = (<>
     <li><NavLink to={"/"} className={"btn ml-2"}>Home</NavLink></li>
@@ -31,12 +33,15 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-4">
-        <Link to="/login">
-          <button className="btn text-white btn-info">Login</button>
-        </Link>
-        <Link to="/register">
-          <button className="btn text-white btn-success">Register</button>
-        </Link>
+        {user ? <div className="">User</div> : <div className="">
+          <Link to="/login">
+            <button className="btn text-white btn-info">Login</button>
+          </Link>
+          <Link to="/register">
+            <button className="btn text-white btn-success">Register</button>
+          </Link>
+        </div>
+        }
       </div>
     </div>
   )

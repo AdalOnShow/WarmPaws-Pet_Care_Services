@@ -1,18 +1,20 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { IoEye, IoEyeOff } from 'react-icons/io5'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
+import { AuthContext } from './../Contexts/AuthContext';
+import { toast } from 'react-toastify';
+
+
 
 const Register = () => {
+  const { registerWithEmailAndPassword, setUser, updateProfileFunc } = useContext(AuthContext)
   const [passShow, setPassShow] = useState(false)
   const [isPassValid, setIsPassValid] = useState(false)
   const passRef = useRef()
+  const navite = useNavigate()
 
   const handlePassShow = () => {
     setPassShow(!passShow)
-  }
-
-  const handleFormSubmite = (e) => {
-    e.preventDefault()
   }
 
   const handlePassValidation = () => {
@@ -23,7 +25,51 @@ const Register = () => {
     }
     return
   }
-  
+
+  const handleSignupError = (error) => {
+    if (error.code === "auth/email-already-in-use") {
+      return "This email is already registered. Please login instead.";
+    } else if (error.code === "auth/invalid-email") {
+      return "The email address is not valid. Please enter a correct email.";
+    } else if (error.code === "auth/weak-password") {
+      return "Password is too weak. Use at least 6 characters with uppercase and lowercase letters.";
+    } else if (error.code === "auth/network-request-failed") {
+      return "Network error. Check your internet connection and try again.";
+    } else {
+      return "Something went wrong. Please try again later.";
+    }
+  };
+
+  const handleFormSubmite = (e) => {
+    e.preventDefault()
+    const email = e.target.email.value
+    const password = e.target.password.value
+    const name = e.target.name.value
+    const photo = e.target.photo.value
+
+    if (isPassValid) {
+      registerWithEmailAndPassword(email, password)
+        .then(res => {
+          setUser(res.user)
+          updateProfileFunc(name, photo)
+            .then(() => {
+              toast.success("User Register success")
+              navite('/')
+            })
+            .catch(error => {
+              const massage = handleSignupError(error)
+              toast.error(massage)
+            })
+        })
+        .catch(error => {
+          const massage = handleSignupError(error)
+          toast.error(massage)
+        })
+    } else {
+      toast.warning("Password must be at least 6 characters long and contain at least one uppercase letter and one lowercase letter.")
+    }
+  }
+
   return (
     <div className='w-full my-16 flex-center'>
       <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl p-5">
