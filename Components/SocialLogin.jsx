@@ -1,11 +1,31 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../Contexts/AuthContext'
-import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router'
+import toast from 'react-hot-toast'
 
 const SocialLogin = () => {
   const { sigInWithGoogle, setUser } = useContext(AuthContext)
   const navite = useNavigate()
+
+  const handleSigninError = (error) => {
+    if (error.code === "auth/invalid-email") {
+      return "Invalid email format"
+    } else if (error.code === "auth/invalid-credential") {
+      return "Invalid credentials. Please try again."
+    } else if (error.code === "auth/user-disabled") {
+      return "User has been disabled"
+    } else if (error.code === "auth/user-not-found") {
+      return "No user found with this email"
+    } else if (error.code === "auth/wrong-password") {
+      return "Incorrect password"
+    } else if (error.code === "auth/too-many-requests") {
+      return "Too many login attempts. Please try again later."
+    } else if (error.code === "auth/network-request-failed") {
+      return "Network error. Please check your connection."
+    } else {
+      return "Something went wrong. Please try again later.";
+    }
+  };
 
   const handleSigninGoogle = () => {
     sigInWithGoogle()
@@ -14,7 +34,10 @@ const SocialLogin = () => {
         toast.success("Signin Successfull")
         navite('/')
       })
-      .catch((error) => toast.error(error.massage))
+      .catch((error) => {
+        const massage = handleSigninError(error)
+        toast.error(massage)
+      })
   }
 
   return (

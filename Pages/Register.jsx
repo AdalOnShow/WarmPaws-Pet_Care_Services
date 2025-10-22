@@ -2,8 +2,8 @@ import React, { useContext, useRef, useState } from 'react'
 import { IoEye, IoEyeOff } from 'react-icons/io5'
 import { Link, useNavigate } from 'react-router'
 import { AuthContext } from './../Contexts/AuthContext';
-import { toast } from 'react-toastify';
 import SocialLogin from '../Components/SocialLogin';
+import toast from 'react-hot-toast';
 
 
 
@@ -72,20 +72,20 @@ const Register = () => {
   }
 
   return (
-    <div className='w-full my-16 flex-center'>
+    <div className='w-full py-10 flex-center bg-linear-to-b from-info to-success'>
       <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl p-5">
         <h2 className='text-4xl text-center font-bold'>Register Now!</h2>
         <form onSubmit={(e) => handleFormSubmite(e)} className="card-body">
           <fieldset className="fieldset">
 
             <label className="label">Name</label>
-            <input required type="text" name='name' placeholder="Enter Your Name Here" className="input input-info w-full" />
+            <input type="text" name='name' placeholder="Enter Your Name Here" className="input input-info w-full" />
 
             <label className="label">Email</label>
             <input required type="email" name='email' placeholder="Email" className="input input-success w-full" />
 
             <label className="label">Photo URL</label>
-            <input required type="text" name='photo' placeholder="Photo URL" className="input input-info w-full" />
+            <input type="text" name='photo' placeholder="Photo URL" className="input input-info w-full" />
 
             <label className="label">Password</label>
             <label className={`input w-full ${isPassValid ? "input-success" : "input-error"}`}>

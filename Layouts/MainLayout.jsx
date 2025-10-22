@@ -4,7 +4,7 @@ import Navbar from "../Components/Navbar"
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="transition duration-300">
       <Navbar />
       <Outlet />
       <Footer />

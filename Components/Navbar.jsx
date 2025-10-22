@@ -1,9 +1,21 @@
 import React, { use } from 'react'
 import { Link, NavLink } from 'react-router'
 import { AuthContext } from '../Contexts/AuthContext'
+import toast from 'react-hot-toast'
 
 const Navbar = () => {
-  const { user } = use(AuthContext)
+  const { user, logOutFunc } = use(AuthContext)
+
+  const handleLogOut = () => {
+    logOutFunc()
+      .then(() => {
+        toast.success("logOut Successfull")
+      })
+      .catch(() => {
+        toast.error("Something went wrong. Please try again later.")
+      })
+  }
+
 
   const navItem = (<>
     <li><NavLink to={"/"} className={"btn ml-2"}>Home</NavLink></li>
@@ -33,14 +45,27 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-4">
-        {user ? <div className="">User</div> : <div className="">
-          <Link to="/login">
-            <button className="btn text-white btn-info">Login</button>
-          </Link>
-          <Link to="/register">
-            <button className="btn text-white btn-success">Register</button>
-          </Link>
-        </div>
+        {user ?
+          <div className="flex-center gap-4">
+            <Link to="/profile">
+              <div className="avatar relative group">
+                <div className="ring-success ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
+                  <img src={user.photoURL ? user.photoURL : `https://img.daisyui.com/images/profile/demo/spiderperson@192.webp`} />
+                </div>
+                {user.displayName && <p className="text-center absolute p-4 w-max right-0 top-12 bg-white rounded-2xl shadow-md hidden group-hover:block transition-all duration-300">{user?.displayName}</p>}
+              </div>
+            </Link>
+            <button onClick={handleLogOut} type="button" className='btn btn-success text-white'>LogOut</button>
+          </div>
+          :
+          <div className="flex-center gap-4">
+            <Link to="/login">
+              <button className="btn text-white btn-info">Login</button>
+            </Link>
+            <Link to="/register">
+              <button className="btn text-white btn-success">Register</button>
+            </Link>
+          </div>
         }
       </div>
     </div>

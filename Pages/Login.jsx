@@ -3,7 +3,7 @@ import { IoEye, IoEyeOff } from 'react-icons/io5'
 import { Link, useNavigate } from 'react-router'
 import SocialLogin from '../Components/SocialLogin'
 import { AuthContext } from '../Contexts/AuthContext'
-import { toast } from 'react-toastify'
+import toast from 'react-hot-toast'
 
 const Login = () => {
   const { signInWithEmailAndPasswordFunc, setUser } = use(AuthContext)
@@ -51,7 +51,7 @@ const Login = () => {
       })
   }
   return (
-    <div className='w-full my-16 flex-center'>
+    <div className='w-full py-10 flex-center bg-linear-to-b from-info to-success'>
       <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl p-5">
         <h2 className='text-4xl text-center font-bold'>Login Now!</h2>
         <form onSubmit={(e) => handleLogin(e)} className="card-body">
