@@ -94,8 +94,6 @@ const Register = () => {
                 {passShow ? <IoEyeOff size={20} /> : <IoEye size={20} />}
               </button>
             </label>
-
-            <div><a className="link link-hover">Forgot password?</a></div>
             <button type='submit' className="btn btn-neutral mt-4">Register</button>
           </fieldset>
           <p className="">Don you already have an account? <Link to="/login" className='font-bold text-success hover:underline'>Login</Link></p>

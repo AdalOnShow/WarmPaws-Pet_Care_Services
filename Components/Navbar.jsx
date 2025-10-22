@@ -2,18 +2,30 @@ import React, { use } from 'react'
 import { Link, NavLink } from 'react-router'
 import { AuthContext } from '../Contexts/AuthContext'
 import toast from 'react-hot-toast'
+import Swal from 'sweetalert2'
 
 const Navbar = () => {
   const { user, logOutFunc } = use(AuthContext)
 
   const handleLogOut = () => {
-    logOutFunc()
-      .then(() => {
-        toast.success("logOut Successfull")
-      })
-      .catch(() => {
-        toast.error("Something went wrong. Please try again later.")
-      })
+    Swal.fire({
+      title: "Do you wnat to Logout?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Logout"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        logOutFunc()
+          .then(() => {
+            toast.success("logOut Successfull")
+          })
+          .catch(() => {
+            toast.error("Something went wrong. Please try again later.")
+          })
+      }
+    });
   }
 
 

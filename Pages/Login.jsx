@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react'
+import React, { use, useRef, useState } from 'react'
 import { IoEye, IoEyeOff } from 'react-icons/io5'
 import { Link, useNavigate } from 'react-router'
 import SocialLogin from '../Components/SocialLogin'
@@ -8,7 +8,8 @@ import toast from 'react-hot-toast'
 const Login = () => {
   const { signInWithEmailAndPasswordFunc, setUser } = use(AuthContext)
   const [passShow, setPassShow] = useState(false)
-  const navite = useNavigate()
+  const navigate = useNavigate()
+  const emailRef = useRef()
 
   const handlePassShow = () => {
     setPassShow(!passShow)
@@ -43,12 +44,17 @@ const Login = () => {
       .then((res) => {
         setUser(res.user)
         toast.success("Signin Successfull")
-        navite('/')
+        navigate('/')
       })
       .catch(err => {
         const massage = handleSigninError(err)
         toast.error(massage)
       })
+  }
+
+  const handleForgetPass = () => {
+    const emailValue = emailRef.current?.value || ''
+    navigate("/forget-password", { state: { email: emailValue } })
   }
   return (
     <div className='w-full py-10 flex-center bg-linear-to-b from-info to-success'>
@@ -57,7 +63,7 @@ const Login = () => {
         <form onSubmit={(e) => handleLogin(e)} className="card-body">
           <fieldset className="fieldset">
             <label className="label">Email</label>
-            <input required name='email' type="email" placeholder="Email" className="input input-info w-full" />
+            <input required name='email' ref={emailRef} type="email" placeholder="Email" className="input input-info w-full" />
 
             <label className="label">Password</label>
             <label className='input input-success w-full'>
@@ -67,7 +73,7 @@ const Login = () => {
               </button>
             </label>
 
-            <div><button type='button' className="link link-hover">Forgot password?</button></div>
+            <div><button onClick={handleForgetPass} type='button' className="link link-hover">Forgot password?</button></div>
             <button type='submit' className="btn btn-neutral mt-4">Login</button>
           </fieldset>
           <p className="">Don't have an account? <Link to="/register" className='font-bold text-success hover:underline'>Register</Link></p>

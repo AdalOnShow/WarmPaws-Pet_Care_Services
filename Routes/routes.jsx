@@ -6,6 +6,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/register";
 import Profile from "../Pages/Profile";
 import PrivateRoute from "./PrivateRoute";
+import ForgetPassword from "../Pages/ForgetPassword";
 
 
 export const router = createBrowserRouter([
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <PrivateRoute><Profile /></PrivateRoute>
+      },
+      {
+        path: "/forget-password",
+        element: <ForgetPassword />
       },
     ]
   },
