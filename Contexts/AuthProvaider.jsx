@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { auth } from '../Firebase/firebase'
 import { AuthContext } from './AuthContext'
 
@@ -11,6 +11,10 @@ const AuthProvaider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password)
   }
 
+  const signInWithEmailAndPasswordFunc = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password)
+  }
+
   const updateProfileFunc = (name, photo) => {
     return updateProfile(auth.currentUser, { displayName: name, photoURL: photo })
   }
@@ -19,7 +23,8 @@ const AuthProvaider = ({ children }) => {
     user,
     setUser,
     registerWithEmailAndPassword,
-    updateProfileFunc
+    updateProfileFunc,
+    signInWithEmailAndPasswordFunc
   }
 
   return <AuthContext value={authInfo}>{children}</AuthContext>

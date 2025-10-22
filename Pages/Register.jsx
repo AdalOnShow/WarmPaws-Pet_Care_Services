@@ -3,6 +3,7 @@ import { IoEye, IoEyeOff } from 'react-icons/io5'
 import { Link, useNavigate } from 'react-router'
 import { AuthContext } from './../Contexts/AuthContext';
 import { toast } from 'react-toastify';
+import SocialLogin from '../Components/SocialLogin';
 
 
 
@@ -98,6 +99,8 @@ const Register = () => {
             <button type='submit' className="btn btn-neutral mt-4">Register</button>
           </fieldset>
           <p className="">Don you already have an account? <Link to="/login" className='font-bold text-success hover:underline'>Login</Link></p>
+          <div className="divider divider-success">OR</div>
+          <SocialLogin />
         </form>
       </div>
     </div>
