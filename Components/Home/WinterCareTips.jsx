@@ -7,21 +7,21 @@ const WinterCareTips = () => {
       title: "Keep Them Warm Indoors",
       description:
         "Ensure your pet has a cozy, draft-free place to sleep with warm blankets or a heated pet bed.",
-      image: "https://i.postimg.cc/PrjQLk3N/pet-warm-bed.jpg"
+      image: "https://www.switzerveterinaryclinic.com/blog/wp-content/uploads/2023/11/iStock-1446898945-1-2000x1500.jpg"
     },
     {
       id: 2,
       title: "Limit Outdoor Time",
       description:
         "Avoid long walks during extreme cold. Shorter, more frequent walks are better for your pet’s comfort.",
-      image: "https://i.postimg.cc/9fQn7HrV/winter-walk-dog.jpg"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5WTY0HAqDi0FVtzwNMc3s9fXh4Ga6tRcf_g&s"
     },
     {
       id: 3,
       title: "Use Pet-Friendly Paw Balm",
       description:
         "Protect your pet’s paws from salt and ice with a moisturizing balm after every walk.",
-      image: "https://i.postimg.cc/xTXv6mZC/paw-balm.jpg"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSAynaIbPhTKlG-Hk8Sr1ptbVZcxUO3BEbb-WEeh-ugWDedXIbGddjkO52Z8Dul3UbMCU&usqp=CAU"
     }
   ];
 

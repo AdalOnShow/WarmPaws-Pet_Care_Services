@@ -68,7 +68,7 @@ const Navbar = () => {
                 <div className="ring-success ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
                   <img src={user?.photoURL ? user.photoURL : `https://img.daisyui.com/images/profile/demo/spiderperson@192.webp`} />
                 </div>
-                {user?.displayName && <p className="text-center absolute p-4 w-max right-0 top-12 bg-white rounded-2xl shadow-md hidden group-hover:block transition-all duration-300">{user.displayName}</p>}
+                {user?.displayName && <p className="z-50 text-center absolute p-4 w-max right-0 top-12 bg-white rounded-2xl shadow-md hidden group-hover:block transition-all duration-300">{user.displayName}</p>}
               </div>
             </Link>
             <button onClick={handleLogOut} type="button" className='btn btn-success text-white'>LogOut</button>

@@ -5,25 +5,25 @@ const vets = [
     id: 1,
     name: "Dr. Sarah Thompson",
     specialty: "Canine Nutrition & Wellness",
-    image: "https://i.postimg.cc/HnL7QhBv/vet1.jpg"
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEl7G5A0wW3ypdrUU_xdGy0km_uyuHD9UddQ&s"
   },
   {
     id: 2,
     name: "Dr. Michael Lee",
     specialty: "Small Animal Surgery",
-    image: "https://i.postimg.cc/7ZkqJx6C/vet2.jpg"
+    image: "https://img.freepik.com/free-photo/african-man-black-suit_1157-46903.jpg?semt=ais_hybrid&w=740&q=80"
   },
   {
     id: 3,
     name: "Dr. Priya Patel",
     specialty: "Behavioral Therapy",
-    image: "https://i.postimg.cc/T3dNQHwn/vet3.jpg"
+    image: "https://img.freepik.com/free-photo/portrait-confident-young-businessman-with-his-arms-crossed_23-2148176206.jpg?semt=ais_hybrid&w=740&q=80"
   },
   {
     id: 4,
     name: "Dr. Carlos Ramirez",
     specialty: "Winter Care & Preventive Medicine",
-    image: "https://i.postimg.cc/3R4QZ6yL/vet4.jpg"
+    image: "https://media.istockphoto.com/id/1372065700/photo/portrait-of-a-confident-young-businessman-working-in-a-modern-office.jpg?s=612x612&w=0&k=20&c=oPRp9aiGEb_00Y0Q_eR40MiOisM2eFfeP7lDf0IqJDw="
   }
 ];
 
