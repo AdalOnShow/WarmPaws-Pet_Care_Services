@@ -7,6 +7,8 @@ import Register from "../Pages/register";
 import Profile from "../Pages/Profile";
 import PrivateRoute from "./PrivateRoute";
 import ForgetPassword from "../Pages/ForgetPassword";
+import ServiceDetails from "../Pages/ServiceDetails";
+import Services from "../Pages/Services";
 
 
 export const router = createBrowserRouter([
@@ -33,6 +35,16 @@ export const router = createBrowserRouter([
       {
         path: "/forget-password",
         element: <ForgetPassword />
+      },
+      {
+        path: "/services",
+        element: <Services />,
+        loader: () => fetch('/services.json')
+      },
+      {
+        path: "/service-details/:id",
+        element: <ServiceDetails />,
+        loader: () => fetch('/services.json')
       },
     ]
   },
