@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/service-details/:id",
-        element: <ServiceDetails />,
+        element: <PrivateRoute><ServiceDetails /></PrivateRoute>,
         loader: () => fetch('/services.json')
       },
     ]

@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useLoaderData, useParams } from "react-router";
+import { AuthContext } from "../Contexts/AuthContext";
+import { use } from "react";
 
 
 const ServiceDetails = () => {
+  const {user} = use(AuthContext)
   const { id } = useParams();
   const servicesData = useLoaderData()
   const service = servicesData.find((s) => s.serviceId === parseInt(id));
 
-  const [formData, setFormData] = useState({ name: "", email: "" });
+  const [formData, setFormData] = useState({ name: user?.displayName, email: user?.email });
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
 
   if (!service) {
     return <p className="text-center mt-10">Service not found!</p>;
@@ -21,19 +29,16 @@ const ServiceDetails = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto py-12 px-5">
-      <Toaster position="top-right" />
+    <div className="max-w-11/12 mx-auto py-12 px-5">
       <h2 className="text-3xl font-bold mb-6">{service.serviceName}</h2>
 
-      <div className="flex flex-col md:flex-row gap-8">
-        {/* Service Image */}
+      <div className="flex-center flex-col md:flex-row gap-16">
         <img
           src={service.image}
           alt={service.serviceName}
-          className="w-full md:w-1/2 h-80 object-cover rounded-xl shadow-md"
+          className="w-full md:w-1/2 h-96 object-cover rounded-xl shadow-md"
         />
 
-        {/* Service Details */}
         <div className="flex-1 space-y-4">
           <p className="text-gray-700">{service.description}</p>
           <p>
@@ -50,7 +55,6 @@ const ServiceDetails = () => {
             {service.providerEmail})
           </p>
 
-          {/* Booking Form */}
           <form
             onSubmit={handleSubmit}
             className="mt-6 bg-white p-6 rounded-xl shadow-md space-y-4"
@@ -82,7 +86,7 @@ const ServiceDetails = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg font-medium transition-colors"
+              className="w-full btn btn-info text-white transition-colors"
             >
               Book Now
             </button>

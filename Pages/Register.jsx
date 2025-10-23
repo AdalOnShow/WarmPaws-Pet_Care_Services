@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from 'react'
 import { IoEye, IoEyeOff } from 'react-icons/io5'
-import { Link, useNavigate } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
 import { AuthContext } from './../Contexts/AuthContext';
 import SocialLogin from '../Components/SocialLogin';
 import toast from 'react-hot-toast';
@@ -12,7 +12,11 @@ const Register = () => {
   const [passShow, setPassShow] = useState(false)
   const [isPassValid, setIsPassValid] = useState(false)
   const passRef = useRef()
-  const navite = useNavigate()
+  const navigate = useNavigate()
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
 
   const handlePassShow = () => {
     setPassShow(!passShow)
@@ -55,7 +59,7 @@ const Register = () => {
           updateProfileFunc(name, photo)
             .then(() => {
               toast.success("User Register success")
-              navite('/')
+              navigate(from, { replace: true });
             })
             .catch(error => {
               const massage = handleSignupError(error)

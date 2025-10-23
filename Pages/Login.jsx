@@ -1,6 +1,6 @@
 import React, { use, useRef, useState } from 'react'
 import { IoEye, IoEyeOff } from 'react-icons/io5'
-import { Link, useNavigate } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
 import SocialLogin from '../Components/SocialLogin'
 import { AuthContext } from '../Contexts/AuthContext'
 import toast from 'react-hot-toast'
@@ -9,7 +9,10 @@ const Login = () => {
   const { signInWithEmailAndPasswordFunc, setUser } = use(AuthContext)
   const [passShow, setPassShow] = useState(false)
   const navigate = useNavigate()
+  const location = useLocation();
   const emailRef = useRef()
+
+  const from = location.state?.from?.pathname || "/";
 
   const handlePassShow = () => {
     setPassShow(!passShow)
@@ -44,7 +47,7 @@ const Login = () => {
       .then((res) => {
         setUser(res.user)
         toast.success("Signin Successfull")
-        navigate('/')
+        navigate(from, { replace: true })
       })
       .catch(err => {
         const massage = handleSigninError(err)

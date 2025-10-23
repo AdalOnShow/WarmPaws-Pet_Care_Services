@@ -1,11 +1,14 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../Contexts/AuthContext'
-import { useNavigate } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 import toast from 'react-hot-toast'
 
 const SocialLogin = () => {
   const { sigInWithGoogle, setUser } = useContext(AuthContext)
-  const navite = useNavigate()
+  const navigate = useNavigate()
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const handleSigninError = (error) => {
     if (error.code === "auth/invalid-email") {
@@ -32,7 +35,7 @@ const SocialLogin = () => {
       .then((res) => {
         setUser(res.user)
         toast.success("Signin Successfull")
-        navite('/')
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const massage = handleSigninError(error)

@@ -1,5 +1,5 @@
 import { use } from "react";
-import ServiceCard from "./ServicesCard";
+import ServiceCard from "../ServicesCard";
 import { Link } from "react-router";
 
 

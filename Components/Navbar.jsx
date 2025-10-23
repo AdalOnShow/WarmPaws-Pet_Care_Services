@@ -5,7 +5,7 @@ import toast from 'react-hot-toast'
 import Swal from 'sweetalert2'
 
 const Navbar = () => {
-  const { user, logOutFunc } = use(AuthContext)
+  const { user, logOutFunc, loading } = use(AuthContext)
 
   const handleLogOut = () => {
     Swal.fire({
@@ -57,14 +57,18 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-4">
-        {user ?
+        {loading ?
+          <button className="loading loading-spinner loading-md"></button>
+          :
+          user
+          ?
           <div className="flex-center gap-4">
             <Link to="/profile">
               <div className="avatar relative group">
                 <div className="ring-success ring-offset-base-100 w-10 rounded-full ring-2 ring-offset-2">
-                  <img src={user.photoURL ? user.photoURL : `https://img.daisyui.com/images/profile/demo/spiderperson@192.webp`} />
+                  <img src={user?.photoURL ? user.photoURL : `https://img.daisyui.com/images/profile/demo/spiderperson@192.webp`} />
                 </div>
-                {user.displayName && <p className="text-center absolute p-4 w-max right-0 top-12 bg-white rounded-2xl shadow-md hidden group-hover:block transition-all duration-300">{user?.displayName}</p>}
+                {user?.displayName && <p className="text-center absolute p-4 w-max right-0 top-12 bg-white rounded-2xl shadow-md hidden group-hover:block transition-all duration-300">{user.displayName}</p>}
               </div>
             </Link>
             <button onClick={handleLogOut} type="button" className='btn btn-success text-white'>LogOut</button>
