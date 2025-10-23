@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import ForgetPassword from "../Pages/ForgetPassword";
 import ServiceDetails from "../Pages/ServiceDetails";
 import Services from "../Pages/Services";
+import PublicRoute from "./PublicRoute";
 
 
 export const router = createBrowserRouter([
@@ -22,11 +23,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />
+        element: <PublicRoute><Login /></PublicRoute>
       },
       {
         path: "/register",
-        element: <Register />
+        element: <PublicRoute><Register /></PublicRoute>
       },
       {
         path: "/profile",
