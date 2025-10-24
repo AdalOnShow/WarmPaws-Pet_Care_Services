@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../Contexts/AuthContext'
 import toast from 'react-hot-toast'
+import HydrateFallbackElement from '../Components/hydrateFallbackElement'
 
 const Profile = () => {
-  const { user, setUser, updateProfileFunc } = useContext(AuthContext)
+  const { user, setUser, updateProfileFunc, loading } = useContext(AuthContext)
   const [showUpdate, setShowUpdate] = useState(false)
   const [name, setName] = useState('')
   const [photo, setPhoto] = useState('')
@@ -34,6 +35,12 @@ const Profile = () => {
     } catch (error) {
       toast.error(error?.message || 'Update failed')
     }
+  }
+
+  if (loading) {
+    return (
+      <HydrateFallbackElement />
+    )
   }
 
   return (

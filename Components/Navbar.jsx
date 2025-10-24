@@ -49,7 +49,7 @@ const Navbar = () => {
             {navItem}
           </ul>
         </div>
-        <Link to={"/"} className="text-2xl font-semibold">WarmPaws</Link>
+        <Link to={"/"} className="text-2xl font-semibold hidden md:block">WarmPaws</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

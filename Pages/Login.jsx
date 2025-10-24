@@ -63,7 +63,7 @@ const Login = () => {
   }
   return (
     <div className='w-full py-10 flex-center bg-linear-to-b from-info to-success'>
-      <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl p-5">
+      <div className="card bg-base-100  max-w-11/12 w-lg shrink-0 shadow-2xl p-5">
         <h2 className='text-4xl text-center font-bold'>Login Now!</h2>
         <form onSubmit={(e) => handleLogin(e)} className="card-body">
           <fieldset className="fieldset">

@@ -45,7 +45,7 @@ const ForgetPassword = () => {
 
   return (
     <div className='w-full min-h-[70vh] py-10 flex-center bg-linear-to-b from-info to-success'>
-      <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl py-10 p-5">
+      <div className="card bg-base-100  max-w-11/12 w-lg shrink-0 shadow-2xl p-5">
         <h2 className='text-4xl text-center font-bold mb-8'>Forget Password</h2>
 
         <form onSubmit={handleForgetPass} className="card-body">

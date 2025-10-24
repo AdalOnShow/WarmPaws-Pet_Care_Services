@@ -29,7 +29,10 @@ export default function HeroSlider() {
     <div className="relative w-full h-[80vh]">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
-        navigation
+        navigation={{
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }}
         pagination={{ clickable: true }}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         loop
@@ -53,6 +56,9 @@ export default function HeroSlider() {
             </div>
           </SwiperSlide>
         ))}
+
+        <div className="swiper-button-prev opacity-0 md:opacity-100 text-white!" />
+        <div className="swiper-button-next opacity-0 md:opacity-100 text-white!" />
       </Swiper>
     </div>
   );
