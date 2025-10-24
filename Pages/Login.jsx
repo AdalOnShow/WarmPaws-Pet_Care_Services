@@ -47,7 +47,9 @@ const Login = () => {
       .then((res) => {
         setUser(res.user)
         toast.success("Signin Successfull")
-        navigate(from, { replace: true })
+        setTimeout(() => {
+          navigate(from, { replace: true })
+        }, 300)
       })
       .catch(err => {
         const massage = handleSigninError(err)

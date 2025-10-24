@@ -29,15 +29,16 @@ const vets = [
 
 const ExpertVets = () => {
   return (
-    <section className="py-12 bg-linear-to-b from-blue-50 to-white">
-      <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-10">
+    <section className="py-12 bg-[#F9F6F1]">
+      <div className="max-w-11/12 mx-auto px-4 text-center">
+        <h2 data-aos="fade-right" className="text-3xl font-bold text-gray-800 mb-10">
           Meet Our Expert Vets
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {vets.map((vet) => (
             <div
+              data-aos="fade-up"
               key={vet.id}
               className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
             >

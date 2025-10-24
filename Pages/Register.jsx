@@ -16,6 +16,7 @@ const Register = () => {
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
+  console.log(from)
 
 
   const handlePassShow = () => {

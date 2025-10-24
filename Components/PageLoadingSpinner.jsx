@@ -7,7 +7,7 @@ const LoadingSpinner = () => {
 
   if (navigation.state === "loading") {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-white/70 z-50">
+      <div className="fixed top-20 inset-0 flex items-center justify-center bg-white/70 z-50">
         <RotateLoader />
       </div>
     );

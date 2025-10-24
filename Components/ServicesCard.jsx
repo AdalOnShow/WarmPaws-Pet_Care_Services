@@ -5,7 +5,7 @@ const ServiceCard = ({ service }) => {
   const { image, serviceName, price, rating, serviceId } = service;
 
   return (
-    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
+    <div data-aos="fade-up" className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
       <img
         src={image}
         alt={serviceName}

@@ -27,14 +27,15 @@ const WinterCareTips = () => {
 
   return (
     <section className="py-12 bg-blue-50">
-      <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-8">
+      <div className="max-w-11/12 mx-auto px-4 text-center">
+        <h2 data-aos="fade-right" className="text-3xl font-bold text-gray-800 mb-8">
           Winter Care Tips for Pets
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {winterTips.map((tip) => (
             <div
+              data-aos="fade-up"
               key={tip.id}
               className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-5 flex flex-col items-center"
             >

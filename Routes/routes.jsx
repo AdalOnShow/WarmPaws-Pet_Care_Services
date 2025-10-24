@@ -10,6 +10,9 @@ import ForgetPassword from "../Pages/ForgetPassword";
 import ServiceDetails from "../Pages/ServiceDetails";
 import Services from "../Pages/Services";
 import PublicRoute from "./PublicRoute";
+import LoadingSpinner from "../Components/PageLoadingSpinner";
+import { RotateLoader } from "react-spinners";
+import HydrateFallbackElement from "../Components/hydrateFallbackElement";
 
 
 export const router = createBrowserRouter([
@@ -40,12 +43,14 @@ export const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services />,
-        loader: () => fetch('/services.json')
+        loader: () => fetch('/services.json'),
+        hydrateFallbackElement: <HydrateFallbackElement />
       },
       {
         path: "/service-details/:id",
         element: <PrivateRoute><ServiceDetails /></PrivateRoute>,
-        loader: () => fetch('/services.json')
+        loader: () => fetch('/services.json'),
+        hydrateFallbackElement: <HydrateFallbackElement />
       },
     ]
   },

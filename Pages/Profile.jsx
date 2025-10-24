@@ -3,7 +3,7 @@ import { AuthContext } from '../Contexts/AuthContext'
 import toast from 'react-hot-toast'
 
 const Profile = () => {
-  const { user, updateProfileFunc } = useContext(AuthContext)
+  const { user, setUser, updateProfileFunc } = useContext(AuthContext)
   const [showUpdate, setShowUpdate] = useState(false)
   const [name, setName] = useState('')
   const [photo, setPhoto] = useState('')
@@ -29,6 +29,7 @@ const Profile = () => {
     try {
       await updateProfileFunc(name.trim(), photo.trim())
       toast.success('Profile updated')
+      setUser({ ...user, displayName: name, photoURL: photo })
       setShowUpdate(false)
     } catch (error) {
       toast.error(error?.message || 'Update failed')
