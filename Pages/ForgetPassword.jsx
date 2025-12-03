@@ -45,13 +45,13 @@ const ForgetPassword = () => {
 
   return (
     <div className='w-full min-h-[70vh] py-10 flex-center bg-linear-to-b from-info to-success'>
-      <div className="card bg-base-100  max-w-11/12 w-lg shrink-0 shadow-2xl p-5">
-        <h2 className='text-4xl text-center font-bold mb-8'>Forget Password</h2>
+      <div className="p-5 shadow-2xl card bg-base-100 max-w-11/12 w-lg shrink-0">
+        <h2 className='mb-8 text-4xl font-bold text-center'>Forget Password</h2>
 
         <form onSubmit={handleForgetPass} className="card-body">
           <label className="label">Email</label>
-          <input required name='email' defaultValue={prefilledEmail} type="email" placeholder="Email" className="input input-info w-full" />
-          <button type='submit' className="btn btn-info text-white w-full py-2 rounded mt-5">
+          <input required name='email' defaultValue={prefilledEmail} type="email" placeholder="Email" className="w-full input input-info" />
+          <button type='submit' className="w-full py-2 mt-5 text-white rounded btn btn-info">
             Send Reset Link
           </button>
         </form>

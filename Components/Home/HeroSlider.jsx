@@ -26,7 +26,7 @@ const slides = [
 
 export default function HeroSlider() {
   return (
-    <div className="relative w-full h-[80vh]">
+    <div className="relative w-full h-[60vh] mt-2">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         navigation={{
@@ -44,12 +44,12 @@ export default function HeroSlider() {
               className="relative w-full h-full bg-center bg-cover"
               style={{ backgroundImage: `url(${slide.img})` }}
             >
-              <div className="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-center text-white">
-                <h2 className="text-4xl md:text-5xl font-bold mb-3 drop-shadow-lg">
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white bg-black/30">
+                <h2 className="mb-3 text-4xl font-bold md:text-5xl drop-shadow-lg">
                   {slide.title}
                 </h2>
-                <p className="text-lg md:text-xl max-w-xl">{slide.subtitle}</p>
-                <button className="mt-6 btn btn-success text-white transition">
+                <p className="max-w-xl text-lg md:text-xl">{slide.subtitle}</p>
+                <button className="mt-6 text-white transition btn btn-success">
                   Explor Now
                 </button>
               </div>

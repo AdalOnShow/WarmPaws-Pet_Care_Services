@@ -4,22 +4,23 @@ import { useLoaderData, useParams } from "react-router";
 import { AuthContext } from "../Contexts/AuthContext";
 import { use } from "react";
 
-
 const ServiceDetails = () => {
-  const {user} = use(AuthContext)
+  const { user } = use(AuthContext);
   const { id } = useParams();
-  const servicesData = useLoaderData()
+  const servicesData = useLoaderData();
   const service = servicesData.find((s) => s.serviceId === parseInt(id));
 
-  const [formData, setFormData] = useState({ name: user?.displayName, email: user?.email });
+  const [formData, setFormData] = useState({
+    name: user?.displayName,
+    email: user?.email,
+  });
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!service) {
-    return <p className="text-center mt-10">Service not found!</p>;
+    return <p className="mt-10 text-center">Service not found!</p>;
   }
 
   const handleSubmit = (e) => {
@@ -29,14 +30,14 @@ const ServiceDetails = () => {
   };
 
   return (
-    <div className="max-w-11/12 mx-auto py-12 px-5">
-      <h2 className="text-3xl font-bold mb-6">{service.serviceName}</h2>
+    <div className="px-5 py-12 mx-auto max-w-11/12">
+      <h2 className="mb-6 text-3xl font-bold">{service.serviceName}</h2>
 
-      <div className="flex-center flex-col md:flex-row gap-16">
+      <div className="flex-col gap-16 flex-center md:flex-row">
         <img
           src={service.image}
           alt={service.serviceName}
-          className="w-full md:w-1/2 h-96 object-cover rounded-xl shadow-md"
+          className="object-cover w-full shadow-md md:w-1/2 h-96 rounded-xl"
         />
 
         <div className="flex-1 space-y-4">
@@ -51,17 +52,17 @@ const ServiceDetails = () => {
             <span className="font-semibold">Category:</span> {service.category}
           </p>
           <p>
-            <span className="font-semibold">Provider:</span> {service.providerName} (
-            {service.providerEmail})
+            <span className="font-semibold">Provider:</span>{" "}
+            {service.providerName} ({service.providerEmail})
           </p>
 
           <form
             onSubmit={handleSubmit}
-            className="mt-6 bg-white p-6 rounded-xl shadow-md space-y-4"
+            className="p-6 mt-6 space-y-4 bg-white shadow-md rounded-xl"
           >
             <h3 className="text-xl font-semibold">Book Service</h3>
             <div>
-              <label className="block text-gray-700 mb-1">Name</label>
+              <label className="block mb-1 text-gray-700">Name</label>
               <input
                 type="text"
                 value={formData.name}
@@ -69,11 +70,11 @@ const ServiceDetails = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="w-full border border-gray-300 rounded-lg p-2"
+                className="w-full p-2 border border-gray-300 rounded-lg"
               />
             </div>
             <div>
-              <label className="block text-gray-700 mb-1">Email</label>
+              <label className="block mb-1 text-gray-700">Email</label>
               <input
                 type="email"
                 value={formData.email}
@@ -81,12 +82,12 @@ const ServiceDetails = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="w-full border border-gray-300 rounded-lg p-2"
+                className="w-full p-2 border border-gray-300 rounded-lg"
               />
             </div>
             <button
               type="submit"
-              className="w-full btn btn-info text-white transition-colors"
+              className="w-full text-white transition-colors btn btn-info"
             >
               Book Now
             </button>
